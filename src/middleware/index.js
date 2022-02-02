@@ -12,7 +12,7 @@ const s3 = new aws.S3({
 exports.uploads3 = multer({
   storage: multerS3({
     s3: s3,
-    bucket: "ali-store-bd",
+    bucket: "aleeha",
     acl: "public-read",
     metadata: function (req, file, cb) {
       cb(null, { fieldName: file.fieldname });
