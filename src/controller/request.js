@@ -83,7 +83,7 @@ exports.updateRequest = async (req, res) => {
   let productImage = [];
   if (req.files.length > 0) {
     productImage = req.files.map((file) => {
-      return { img: file.location };
+      return { img: file.filename };
     });
   }
   const upReq = {
