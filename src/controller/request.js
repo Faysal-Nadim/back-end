@@ -81,10 +81,6 @@ exports.updateRequest = async (req, res) => {
     shipFrom,
   } = req.body;
 
-  if (req.file) {
-    req.body.productImage = "/public/" + req.file.filename;
-  }
-
   const upReq = {
     productLink,
     title,
@@ -96,6 +92,11 @@ exports.updateRequest = async (req, res) => {
     estDelivery,
     shipFrom,
   };
+
+  if (req.file) {
+    upReq.productImage = "/public/" + req.file.filename;
+  }
+
   await Request.findByIdAndUpdate(_id, upReq, { new: true }).exec(
     (error, upReq) => {
       if (error) return res.status(400).json({ error });
